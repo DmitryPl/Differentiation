@@ -103,7 +103,7 @@ double Calculate::Calculate_C(Equation* head)
 	catch (string error)
 	{
 		printf("%s\n", error.c_str());
-		return NAN;
+		return NAN; // Bad
 	}
 }
 
@@ -149,7 +149,7 @@ double Calculate::Commands_One(Equation* left, Equation* right, size_t com)
 	catch (string error)
 	{
 		printf("%s\n", error.c_str());
-		return NAN;
+		return NAN; // Bad
 	}
 }
 
@@ -169,7 +169,7 @@ double Calculate::Commands_Two(double left, double right, size_t com)
 	CALC_COMMANDS(DEG, Deg_);
 #undef CALC_COMMANDS
 	printf("It's not a command.\n");
-	return NAN;
+	return NAN; // Bad
 }
 
 double Calculate::Sum_(double left, double right)
@@ -181,7 +181,7 @@ double Calculate::Sum_(double left, double right)
 	else
 	{
 		printf("Error - Bad - Numbers - Sum\n");
-		return NAN;
+		return NAN; // Bad
 	}
 }
 double Calculate::Div_(double left, double right)
@@ -195,12 +195,12 @@ double Calculate::Div_(double left, double right)
 		if (right == NULL)
 		{
 			printf("Error - right - NULL - Div\n");
-			return NAN;
+			return NAN; // Bad
 		}
 		else
 		{
 			printf("Error - Bad Numbers - Div\n");
-			return NAN;
+			return NAN; // Bad
 		}
 	}
 }
@@ -213,7 +213,7 @@ double Calculate::Mul_(double left, double right)
 	else
 	{
 		printf("Error - Bad - Numbers - Mul\n");
-		return NAN;
+		return NAN; // Bad
 	}
 }
 double Calculate::Sub_(double left, double right)
@@ -225,7 +225,7 @@ double Calculate::Sub_(double left, double right)
 	else
 	{
 		printf("Error - Bad - Numbers - Sub\n");
-		return NAN;
+		return NAN; // Bad
 	}
 }
 double Calculate::ln_(double left, double right)
