@@ -49,7 +49,7 @@ double Optimize::Optimize_C(Equation* head)
 		if (do_t == 'C')
 		{
 			double res = Commands_One(head->left_l(), head->right_l(), head->return_data().second);
-			if (res != NAN)
+			if (!IsNaN(res))
 			{
 				return res;
 			}
@@ -109,11 +109,11 @@ double Optimize::Optimize_C(Equation* head)
 
 double Optimize::Sum_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Div_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Mul_(double left, double right)
 {
@@ -121,31 +121,31 @@ double Optimize::Mul_(double left, double right)
 }
 double Optimize::Sub_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::ln_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Sin_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Cos_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Tg_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Ctg_(double left, double right)
 {
-	return true;
+	return 1;
 }
 double Optimize::Exp_(double left, double right)
 {
-	return true;
+	return 1;
 }
 
 

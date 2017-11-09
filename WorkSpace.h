@@ -422,7 +422,7 @@ bool WorkSpace::Calculate_F()
 		}
 		Calculate Eq2(Numbers, False);
 		double answer = Eq2.Calculate_C(head_main);
-		if (answer != NAN)
+		if (!IsNaN(answer))
 		{
 			printf("Anwser: %f \n", answer);
 			return true;
@@ -454,7 +454,7 @@ bool WorkSpace::Differ_F()
 		if (diff_tree != nullptr)
 		{
 			Optimize Eq4(Numbers, place);
-			if (Eq4.Optimize_C(diff_tree) != NAN)
+			if (!IsNaN(Eq4.Optimize_C(diff_tree)))
 			{
 				Write("output.txt", diff_tree);
 				return true;
@@ -510,34 +510,6 @@ bool WorkSpace::Variables(int flag)
 				if (flag != 'E')
 					printf("Variable not found. Try again.\n");
 			}
-			/*if (Variable.size() > 1)
-			{
-				printf("Enter a values of the variables.\n");
-				size_t length = Variable.size();
-				for (size_t i = 0; i < length; i++)
-				{
-					char flag = 'B';
-					while (flag != 'E')
-					{
-						if (i != place)
-						{
-							string zuy;
-							printf("Variable: %s ", Variable[i].c_str());
-							std::cin >> zuy;
-							if (IsItNumber(zuy))
-							{
-								printf("%s\n", zuy.c_str());
-								Numbers[i] = stof(zuy);
-								flag = 'E';
-							}
-							else
-								printf("Try again\n");
-						}
-						else
-							flag = 'E';
-					}
-				}
-			}*/
 			return true;
 		}
 		if (flag == Calc)

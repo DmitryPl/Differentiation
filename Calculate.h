@@ -50,7 +50,7 @@ double Calculate::Calculate_C(Equation* head)
 		if (do_t == 'C')
 		{
 			double res = Commands_One(head->left_l(), head->right_l(), head->return_data().second);
-			if (res != NAN)
+			if (!IsNaN(res))
 			{
 				return res;
 			}
@@ -103,7 +103,7 @@ double Calculate::Calculate_C(Equation* head)
 	catch (string error)
 	{
 		printf("%s\n", error.c_str());
-		return NAN; // Bad
+		return NAN;
 	}
 }
 
@@ -116,7 +116,7 @@ double Calculate::Commands_One(Equation* left, Equation* right, size_t com)
 		if (left != nullptr)
 		{
 			lefter = Calculate_C(left);
-			if (lefter == NAN)
+			if (!IsNaN(lefter))
 			{
 				error = "Error - left\n";
 				throw error;
@@ -127,7 +127,7 @@ double Calculate::Commands_One(Equation* left, Equation* right, size_t com)
 		if (right != nullptr)
 		{
 			righter = Calculate_C(right);
-			if (righter == NAN)
+			if (!IsNaN(righter))
 			{
 				error = "Error - left\n";
 				throw error;
@@ -136,7 +136,7 @@ double Calculate::Commands_One(Equation* left, Equation* right, size_t com)
 		else
 			righter = NAN;
 		lefter = Commands_Two(lefter, righter, com);
-		if (lefter != NAN)
+		if (!IsNaN(lefter))
 		{
 			return lefter;
 		}
@@ -149,7 +149,7 @@ double Calculate::Commands_One(Equation* left, Equation* right, size_t com)
 	catch (string error)
 	{
 		printf("%s\n", error.c_str());
-		return NAN; // Bad
+		return NAN;
 	}
 }
 
@@ -169,24 +169,24 @@ double Calculate::Commands_Two(double left, double right, size_t com)
 	CALC_COMMANDS(DEG, Deg_);
 #undef CALC_COMMANDS
 	printf("It's not a command.\n");
-	return NAN; // Bad
+	return NAN;
 }
 
 double Calculate::Sum_(double left, double right)
 {
-	if ((left != NAN) && (right != NAN))
+	if (!IsNaN(left) && !IsNaN(right))
 	{
 		return left + right;
 	}
 	else
 	{
 		printf("Error - Bad - Numbers - Sum\n");
-		return NAN; // Bad
+		return NAN;
 	}
 }
 double Calculate::Div_(double left, double right)
 {
-	if ((left != NAN) && (right != NAN) && (right != NULL))
+	if (!IsNaN(left) && !IsNaN(right) && (right != NULL))
 	{
 		return left / right;
 	}
@@ -195,44 +195,44 @@ double Calculate::Div_(double left, double right)
 		if (right == NULL)
 		{
 			printf("Error - right - NULL - Div\n");
-			return NAN; // Bad
+			return NAN;
 		}
 		else
 		{
 			printf("Error - Bad Numbers - Div\n");
-			return NAN; // Bad
+			return NAN;
 		}
 	}
 }
 double Calculate::Mul_(double left, double right)
 {
-	if ((left != NAN) && (right != NAN))
+	if (!IsNaN(left) && !IsNaN(right))
 	{
 		return left * right;
 	}
 	else
 	{
 		printf("Error - Bad - Numbers - Mul\n");
-		return NAN; // Bad
+		return NAN;
 	}
 }
 double Calculate::Sub_(double left, double right)
 {
-	if ((left != NAN) && (right != NAN))
+	if (!IsNaN(left) && !IsNaN(right))
 	{
 		return left - right;
 	}
 	else
 	{
 		printf("Error - Bad - Numbers - Sub\n");
-		return NAN; // Bad
+		return NAN;
 	}
 }
 double Calculate::ln_(double left, double right)
 {
-	if (right == NAN)
+	if (IsNaN(right))
 	{
-		if (left != NAN)
+		if (!IsNaN(left))
 		{
 			return log(left);
 		}
@@ -250,9 +250,9 @@ double Calculate::ln_(double left, double right)
 }
 double Calculate::Sin_(double left, double right)
 {
-	if (right == NAN)
+	if (IsNaN(right))
 	{
-		if (left != NAN)
+		if (!IsNaN(left))
 		{
 			return sin(left);
 		}
@@ -270,9 +270,9 @@ double Calculate::Sin_(double left, double right)
 }
 double Calculate::Cos_(double left, double right)
 {
-	if (right == NAN)
+	if (IsNaN(right))
 	{
-		if (left != NAN)
+		if (!IsNaN(left))
 		{
 			return cos(left);
 		}
@@ -290,9 +290,9 @@ double Calculate::Cos_(double left, double right)
 }
 double Calculate::Tg_(double left, double right)
 {
-	if (right == NAN)
+	if (IsNaN(right))
 	{
-		if (left != NAN)
+		if (!IsNaN(left))
 		{
 			return tan(left);
 		}
@@ -310,9 +310,9 @@ double Calculate::Tg_(double left, double right)
 }
 double Calculate::Ctg_(double left, double right)
 {
-	if (right == NAN)
+	if (IsNaN(right))
 	{
-		if (left != NAN)
+		if (!IsNaN(left))
 		{
 			return 1/tan(left);
 		}
@@ -330,9 +330,9 @@ double Calculate::Ctg_(double left, double right)
 }
 double Calculate::Exp_(double left, double right)
 {
-	if (right == NAN)
+	if (IsNaN(right))
 	{
-		if (left != NAN)
+		if (!IsNaN(left))
 		{
 			return exp(left);
 		}
@@ -350,7 +350,7 @@ double Calculate::Exp_(double left, double right)
 }
 double Calculate::Deg_(double left, double right)
 {
-	if ((left != NAN) && (right != NAN))
+	if (!IsNaN(left) && !IsNaN(right))
 	{
 		return pow(left, right);
 	}

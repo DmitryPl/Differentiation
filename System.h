@@ -36,6 +36,11 @@ int doNothing()
 	return SUCCESS;
 }
 
+bool IsNaN(double num)
+{
+	return num != num;
+}
+
 bool IsItNumber(string word)
 {
 	size_t i = 0;
